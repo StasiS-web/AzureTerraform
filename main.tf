@@ -6,6 +6,13 @@ terraform {
     }
   }
   backend "azurerm" {
+    resource_group_name   = "StorageRG"
+    storage_account_name  = "taskboardstoragestasi14"
+    container_name        = "taskboardcontainer"
+    key                   = "terraform.tfstate"
+  }
+
+  backend "azurerm" {
     resource_group_name = "StorageRG"
     storage_account_name = "taskboardstoragestasi14"
     container_name = "taskboardcontainer"
@@ -15,6 +22,11 @@ terraform {
 
 provider "azurerm" {
   features {}
+
+  subscription_id = "ARM_SUBSCRIPTION_ID"
+  client_id       = "ARM_CLIENT_ID"
+  client_secret   = "ARM_CLIENT_SECRET"
+  tenant_id       = "ARM_TENANT_ID"
 }
 
 resource "random_integer" "ri" {
@@ -60,7 +72,7 @@ resource "azurerm_mssql_server" "sqlserver" {
   resource_group_name          = azurerm_resource_group.rg.name
   location                     = azurerm_resource_group.rg.location
   version                      = "12.0"
-  administrator_login          = var.sql_administrator_login_username
+  administrator_login          = var.sql_administrator_login
   administrator_login_password = var.sql_administrator_password
 }
 
