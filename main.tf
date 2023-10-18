@@ -7,7 +7,7 @@ terraform {
   }
   backend "azurerm" {
     resource_group_name   = "StorageRG"
-    storage_account_name  = "taskboardstoragestasi14"
+    storage_account_name  = "taskboardstoragestasi"
     container_name        = "taskboardcontainer"
     key                   = "terraform.tfstate"
   }
@@ -65,7 +65,7 @@ resource "azurerm_mssql_server" "sqlserver" {
   resource_group_name          = azurerm_resource_group.rg.name
   location                     = azurerm_resource_group.rg.location
   version                      = "12.0"
-  administrator_login          = var.sql_administrator_login
+  administrator_login          = var.sql_administrator_login_username
   administrator_login_password = var.sql_administrator_password
 }
 

@@ -28,7 +28,7 @@ variable "sql_database_name" {
   description = "SQL Database name"
 }
 
-variable "sql_administrator_login" {
+variable "sql_administrator_login_username" {
   type        = string
   description = "SQL administrator name"
 }
